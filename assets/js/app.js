@@ -1,4 +1,5 @@
-import "../css/app.css";
+// import CSS to be compiled in app.css by esbuild
+// note that we use tailwind in a seperate piepline to build base.css
 import "remixicon/fonts/remixicon.css";
 import "katex/dist/katex.min.css";
 

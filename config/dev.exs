@@ -13,16 +13,27 @@ config :livebook, LivebookWeb.Endpoint,
   debug_errors: true,
   check_origin: false,
   watchers: [
-    node: [
-      "node_modules/webpack/bin/webpack.js",
-      "--mode",
-      "development",
+    npx: [
+      "tailwindcss",
+      "-o", "../tmp/static_dev/base.css",
+      cd: Path.expand("../assets", __DIR__)
+    ],
+    esbuild: [
+      "js/app.js",
+      "--bundle",
+      "--sourcemap=inline",
+      "--target=es2016",
+      "--outdir=../tmp/static_dev/",
+      "--loader:.woff2=file",
+      "--loader:.eo2=file",
+      "--loader:.woff=file",
+      "--loader:.ttf=file",
+      "--loader:.eot=file",
+      "--loader:.svg=file",
       "--watch",
-      "--watch-options-stdin",
       cd: Path.expand("../assets", __DIR__)
     ]
   ]
-
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
